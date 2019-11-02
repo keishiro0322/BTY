@@ -8,8 +8,5 @@
     <%= stylesheet_pack_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </head>
-
-  <body>
-    <%= yield %>
-  </body>
+    <%= yield(:content) %>
 </html>

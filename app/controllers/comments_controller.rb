@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class CommentsController < MembersController
   def create
     Comment.transaction do
       @post = Post.find(params[:post_id])
