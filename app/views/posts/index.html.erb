@@ -11,14 +11,12 @@
     <div class="col-lg-8 col-md-10 mx-auto">
       <% @posts.each do |post| %>
       <div class="post-preview">
-        <a href="post.html">
           <h2 class="post-title">
             <%= link_to post.title, post_path(post) %>
           </h2>
           <h3 class="post-content">
             <%= link_to post.content, post_path(post) %>
           </h3>
-        </a>
         <p class="post-meta"><%= post.created_at %></p>
       </div>
       <hr>
