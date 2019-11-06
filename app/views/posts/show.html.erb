@@ -12,6 +12,7 @@
         <%= @post.content %>
       </h3>
       <p class="post-meta"><%= @post.created_at %></p>
+      <%= link_to '削除', post_path(@post), {method: :delete, data: {confirm: "本当に削除しますか？"}, class: 'btn btn-danger btn-xs'} %>
       <hr>
     </div>
   </div>
@@ -28,6 +29,7 @@
           <%= comment.content %>
         </h3>
         <p class="post-meta"><%= comment.created_at %></p>
+        <%= link_to '削除', post_comment_path(@post, comment), {method: :delete, data: {confirm: "本当に削除しますか？"}, class: 'btn btn-danger btn-xs'} %>
         <hr>
       <% end %>
     </div>
