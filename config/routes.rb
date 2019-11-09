@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+  devise_for :users, path: 'auth', controllers: {
+      # omniauth_callbacks: 'auth/omniauth_callbacks',
+      sessions:           'auth/sessions',
+      registrations:      'auth/registrations',
+      passwords:          'auth/passwords',
+      confirmations:      'auth/confirmations',
+  }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :posts
 

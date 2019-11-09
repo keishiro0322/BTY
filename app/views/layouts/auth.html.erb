@@ -1,0 +1,37 @@
+<% content_for(:content) do %>
+  <body>
+  <div class="container">
+    <div class="login-logo">
+      <%= link_to root_path do %><b>Better Than Yesterday</b><% end %>
+    </div>
+
+    <% if notice.present? %>
+      <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-success"></i> 成功</h4>
+        <%= notice %>
+      </div>
+    <% end %>
+    <% if alert.present? %>
+      <div class="alert alert-warning alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-warning"></i> 失敗</h4>
+        <%= alert %>
+      </div>
+    <% end %>
+
+    <% if flash[:info] %>
+      <div class="alert alert-success">
+        <%= flash[:info] %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+
+  </div>
+  <!-- /.login-box -->
+
+  </body>
+<% end %>
+
+<%= render(template: 'layouts/application') %>
