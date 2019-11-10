@@ -1,4 +1,6 @@
 class CommentsController < MembersController
+  before_action :authenticate_user!, only: [:destroy]
+
   def create
     Comment.transaction do
       @post = Post.find(params[:post_id])
