@@ -24,6 +24,11 @@
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
           </li>
+          <% if current_user.try(:admin?) %>
+            <li class="nav-item">
+              <%= link_to rails_admin_path do %><span class="nav-link">Admin</span><% end %>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>
