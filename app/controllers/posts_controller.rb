@@ -7,7 +7,6 @@ class PostsController < MembersController
 
   def new
     @post = Post.new
-    @post.comments.build
   end
 
   def create

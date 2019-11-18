@@ -233,6 +233,9 @@ GEM
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
+    whiny_validation (1.0)
+      activemodel
+      activesupport
     zeitwerk (2.1.10)
 
 PLATFORMS
@@ -255,6 +258,7 @@ DEPENDENCIES
   tzinfo-data
   web-console (>= 3.3.0)
   webpacker (~> 4.0)
+  whiny_validation
 
 RUBY VERSION
    ruby 2.6.3p62
