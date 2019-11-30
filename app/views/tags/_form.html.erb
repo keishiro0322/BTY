@@ -1,0 +1,24 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="text-center"><% if @tag.new_record? %>タグ新規作成<% else %>タグ編集<% end %></h1>
+  </div>
+</div>
+
+<%= form_with model: @tag, local: true do |f| %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <div class="form-group">
+          <%= f.label :tag_name, "タグ名" %>
+          <%= f.text_field :tag_name, {class: "form-control", placeholder: ""} %>
+        </div>
+
+        <div>
+          <%= f.button f.object.new_record? ? "新規作成" : "更新", {class: "btn btn-primary", data: {disable_with: f.object.new_record? ? "新規作成" : "更新"}} %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>
