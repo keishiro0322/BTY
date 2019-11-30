@@ -13,6 +13,10 @@
       <h3 class="post-content">
         <%= @post.content %>
       </h3>
+      <span>【カテゴリ】</span>
+      <% @post.tags.each do |tag| %>
+        <%= tag.tag_name %>
+      <% end %>
       <p class="post-meta"><%= @post.created_at %></p>
       <% if current_user.try(:admin?) %>
         <%= link_to '記事削除', post_path(@post), {method: :delete, data: {confirm: "本当に削除しますか？"}, class: 'btn btn-danger btn-xs'} %>

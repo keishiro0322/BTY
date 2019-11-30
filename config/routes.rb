@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :tags
+
 
   root to: 'posts#index'
 end

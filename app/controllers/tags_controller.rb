@@ -1,18 +1,18 @@
-class PostsController < MembersController
+class TagsController < MembersController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all
+    @tags = Tag.all
   end
 
   def new
-    @post = Post.new
+    @tag = Tag.new
   end
 
   def create
-    Post.transaction do
-      @post = Post.new(permitted_params)
-      @post.save!
+    Tag.transaction do
+      @tag = Tag.new(permitted_params)
+      @tag.save!
     end
 
     redirect_to action: :index
@@ -22,21 +22,15 @@ class PostsController < MembersController
     render action: :new
   end
 
-
-  def show
-    @post = Post.find(params[:id])
-    @comment = Comment.new
-  end
-
   def edit
-    @post = Post.find(params[:id])
+    @tag = Tag.find(params[:id])
   end
 
   def update
-    Post.transaction do
-      @post = Post.find(params[:id])
-      @post.attributes = permitted_params
-      @post.save!
+    Tag.transaction do
+      @tag = Tag.find(params[:id])
+      @tag.attributes = permitted_params
+      @tag.save!
     end
 
     redirect_to action: :index
@@ -47,9 +41,9 @@ class PostsController < MembersController
   end
 
   def destroy
-    Post.transaction do
-      @post = Post.find(params[:id])
-      @post.destroy
+    Tag.transaction do
+      @tag = Tag.find(params[:id])
+      @tag.destroy
     end
 
     redirect_to action: :index
@@ -62,7 +56,6 @@ class PostsController < MembersController
   private
 
   def permitted_params
-    params.require(:post).permit(:title, :content, tag_ids: [],
-                                 comments_attributes: [:post_id, :name, :content, :_destroy, :id])
+    params.require(:tag).permit(:tag_name)
   end
 end

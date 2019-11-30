@@ -28,6 +28,11 @@
           <% end %>
           <% if current_user.try(:admin?) %>
             <li class="nav-item">
+              <%= link_to tags_path do %><span class="nav-link">Tag</span><% end %>
+            </li>
+          <% end %>
+          <% if current_user.try(:admin?) %>
+            <li class="nav-item">
               <%= link_to rails_admin_path do %><span class="nav-link">Admin</span><% end %>
             </li>
           <% end %>
