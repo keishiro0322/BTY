@@ -2,7 +2,12 @@ class PostsController < MembersController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      @posts = @category.posts
+    else
+      @posts = Post.all
+    end
   end
 
   def new
@@ -62,7 +67,7 @@ class PostsController < MembersController
   private
 
   def permitted_params
-    params.require(:post).permit(:title, :content, tag_ids: [],
+    params.require(:post).permit(:title, :content, category_ids: [],
                                  comments_attributes: [:post_id, :name, :content, :_destroy, :id])
   end
 end
