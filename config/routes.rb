@@ -19,11 +19,17 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :category do
+    resources :posts, only: [:index]
+  end
+
+
   resources :comments do
     resources :comments
   end
 
   resources :tags
+  resources :categories
 
 
   root to: 'posts#index'

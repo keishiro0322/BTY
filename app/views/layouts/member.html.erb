@@ -28,7 +28,7 @@
           <% end %>
           <% if current_user.try(:admin?) %>
             <li class="nav-item">
-              <%= link_to tags_path do %><span class="nav-link">Tag</span><% end %>
+              <%= link_to categories_path do %><span class="nav-link">Category</span><% end %>
             </li>
           <% end %>
           <% if current_user.try(:admin?) %>
@@ -40,7 +40,36 @@
       </div>
     </div>
   </nav>
-  <%= yield %>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-3 text-center">Better Than Yesterday</h1>
+      <p class="lead text-center">Keep moving forward</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <%= yield %>
+      </div>
+        <aside class="col-md-4">
+            <div class="card">
+              <article class="card-group-item">
+                <header class="card-header"><h6 class="title">Category</h6></header>
+                <div class="filter-content">
+                  <div class="list-group list-group-flush">
+                    <% Category.all.each do |category| %>
+                      <a href="<%= category_posts_path(category) %>" class="list-group-item"><%= category.name %><span class="float-right badge badge-light round"><%= category.posts.count %></span></a>
+                    <% end %>
+                  </div>  <!-- list-group .// -->
+                </div>
+              </article> <!-- card-group-item.// -->
+            </div> <!-- card.// -->
+        </aside> <!-- col.// -->
+    </div>
+  </div>
+
 </body>
 <% end %>
 

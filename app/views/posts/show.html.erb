@@ -1,21 +1,18 @@
 
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="text-center"><%= @post.title %></h1>
-  </div>
-</div>
-
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
-      <h2>記事内容</h2>
+      <h3 class="post-title">
+        <%= @post.title %>
+      </h3>
       <hr>
       <h3 class="post-content">
         <%= @post.content %>
       </h3>
+      <hr>
       <span>【カテゴリ】</span>
-      <% @post.tags.each do |tag| %>
-        <%= tag.tag_name %>
+      <% @post.categories.each do |category| %>
+        <%= category.name %>
       <% end %>
       <p class="post-meta"><%= @post.created_at %></p>
       <% if current_user.try(:admin?) %>
