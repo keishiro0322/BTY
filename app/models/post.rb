@@ -7,4 +7,7 @@ class Post < ApplicationRecord
   # accepts_nested_attributes_for :comments, allow_destroy: true
 
 
+  scope :order_by_created_at, -> {order(created_at: :desc)}
+
+
 end
