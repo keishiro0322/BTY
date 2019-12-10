@@ -4,9 +4,9 @@ class PostsController < MembersController
   def index
     if params[:category_id]
       @category = Category.find(params[:category_id])
-      @posts = @category.posts
+      @posts = @category.posts.order_by_created_at.page(params[:page])
     else
-      @posts = Post.all
+      @posts = Post.all.order_by_created_at.page(params[:page])
     end
   end
 
